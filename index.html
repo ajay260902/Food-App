@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Food Recipe App</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Food Recipe App</h1>
+        <div class="search">
+            <input type="text" id="searchInput" placeholder="Enter an ingredient...">
+            <button id="searchButton">Search</button>
+
+        </div>
+        <div style="margin-top: 20px;">
+            <select id="filterDropdown">
+                <option value="">Select Filter</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <!-- Add more options as needed -->
+            </select>
+            <button id="filterButton">Filter</button>
+    
+        </div>
+    </header>
+    <p id="totalResults" style="text-align: center;margin-top: 20px;"></p>
+
+
+    <div id="mealList" class="meal-list"></div>
+    <div class="modal-container">
+        <button id="recipeCloseBtn" class="close-button">&times;</button>
+        <div class="meal-details-content">
+            <!-- Content from js will be inserted here -->
+        </div>
+    </div>
+    <footer>
+        <div class="pagination" style="text-align: center;">
+            <button id="prevBtn">Previous</button>
+            <span id="currentPage">1</span>
+            <button id="nextBtn">Next</button>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
