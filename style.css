@@ -274,6 +274,16 @@ h1 {
     margin: auto;
 }
 
+.centered-fixed {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+    z-index: 9999; /* Adjust z-index as needed */
+  }
+  
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
