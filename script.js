@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mealList = document.getElementById('mealList');
     const modalContainer = document.querySelector('.modal-container');
     const mealDetailsContent = document.querySelector('.meal-details-content');
-    const recipeCloseBtn = document.getElementById('recipeCloseBtn');
+    const close = document.getElementById('close');
     const totalResult = document.getElementById('totalResults');
     const baseUrl = 'https://spoonacular.com/recipeImages/';
     const apiKey = '9c72132df581487f8f2426bb5b2803f8'
@@ -137,33 +137,40 @@ document.addEventListener('DOMContentLoaded', () => {
     async function showMealDetailsPopup(meal) {
         // Display loader while the image is loading
         mealDetailsContent.innerHTML = '<div class="loader"></div>';
-
+    
         // Fetch the image
         const response = await fetch(`https://api.spoonacular.com/recipes/${meal.id}/card?apiKey=${apiKey}`);
         const data = await response.json();
-
+    
         // Create image element
         const imgElement = new Image();
         imgElement.src = data.url;
         imgElement.alt = meal.title;
         imgElement.classList.add('meal-image');
-
-        // Hide loader and append image when loaded
+    
+        // Create close button
+        const closeButton = document.getElementById('recipeCloseBtn');
+        closeButton.addEventListener('click', () => {
+            modalContainer.style.display = 'none'; // Hide modal on close button click
+        });
+    
+        // Hide loader and append image and close button when loaded
         imgElement.onload = () => {
-            mealDetailsContent.innerHTML = '';
-            mealDetailsContent.appendChild(imgElement);
+            mealDetailsContent.innerHTML = ''; // Clear loader
+            mealDetailsContent.appendChild(imgElement); // Append image
         };
-
+    
         // Show modal
         modalContainer.style.display = 'block';
     }
+    
 
     // Event listener for popup close button
-    recipeCloseBtn.addEventListener('click', closeRecipeModal);
-
-    function closeRecipeModal() {
-        modalContainer.style.display = 'none';
-    }
+    close.addEventListener('click',()=>{
+        console.log("close")
+        mealDetailsContent.style.display = 'none';
+    });
+    
 
     searchInput.addEventListener('keyup', (e) => {
         if (e.key === 'Enter') {
